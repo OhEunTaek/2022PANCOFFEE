@@ -1,0 +1,179 @@
+.community{
+    .sub_visual{
+        background: url(/img/brand3.jpg) no-repeat center/cover;
+    }
+    .inner{
+        table{
+            width: 100%; border-bottom: 2px solid #111;
+            border-collapse: collapse; margin-bottom: 50px;
+            // 보더컬립스 사용시 선이 사라짐
+            tr{
+                &:nth-of-type(2n){
+                    background: #eee;
+                }
+                &:hover{
+                    background: rosybrown;
+                }
+                th{
+                    padding: 15px;
+                    background: #444;
+                    color: #fff;
+
+                    &:nth-of-type(1){
+                        width: 10%;
+                    }
+                    &:nth-of-type(3){
+                        width: 15%;
+                    }
+                    &:nth-of-type(4){
+                        width: 15%;
+                    }
+                }
+                td{
+                    padding: 13px; border-bottom: 1px solid #ddd;
+                    text-align: center;
+                    &:nth-of-type(2) {text-align: left;}
+                    &:nth-of-type(3){font-family: "맑은고딕";}
+                    a{
+                        color: #333; font-family: 'arial'; line-height: 1.4; float: left;
+                        // table에서는 float해제 필요없음
+                    }
+                }
+            }
+        }
+        .pagination{
+            width: 100%; text-align: center;
+            &::after{
+                content: ''; display: block; clear: both;
+            }
+            .prev{
+                float: left; display: block; width: 30px; height: 30px; font-size:20px; color: #eee; text-align: center;
+                background: #555;
+            }
+            .next{
+                float: right;display: block; width: 30px; height: 30px;font-size:20px; color: #eee; text-align: center;
+                background: #555;
+            }
+            .numbers{
+               display:inline-block; font-size: 0px;
+               //블록요소라 넥스트가 아래로 떨어지므로 인라인블럭
+            //    버그로 a 사이 공간이 생기므로 부모폰트를 0으로 만듦
+               a{
+                   border: 1px solid #888; display: inline-block; width: 30px; height: 30px; font: 11px/30px 'arial'; color: #666;
+                   margin: 0 5px; transition: 0.5s;
+                   &:hover{
+                       background: #666; color: #fff;
+                   }
+               }
+
+            }
+
+        }
+    }
+}
+
+/*  tavlet  */
+
+@media screen and (max-width:$tablet){
+    .community{
+        .sub_visual{
+            background: url(/img/brand1.jpg) no-repeat center/cover;
+        }
+        .inner{
+            table{
+                
+                tr{
+                   
+                    th{
+                           
+                        &:nth-of-type(1){
+                            width: 14%;
+                        }
+                        &:nth-of-type(3){
+                            width: 17%;
+                        }
+                        &:nth-of-type(4){
+                            width: 0%; display: none;
+                        }
+                    }
+                    td{
+                        &:nth-of-type(4){display: none;}
+                     }
+                }
+            }
+            .pagination{
+                
+                .prev{
+                    background: #888;
+                }
+                .next{
+                    background: #888;
+                }
+                .numbers{                  
+                   a{
+                    //    &:nth-of-type(6){  display: none;}
+                    //    &:nth-of-type(7){  display: none;}
+                    //    &:nth-of-type(8){  display: none;}
+                    //    &:nth-of-type(9){  display: none;}
+                    //    &:nth-of-type(10){  display: none;}
+                    @for $i from 6 through 10{
+                        &:nth-of-type(#{$i}){display: none;}
+                    }    
+                    
+                       &:hover{
+                           background: #888; color: #fff;
+                       }
+                   }
+    
+                }
+    
+            }
+        }
+    }
+}
+
+/*  mobile  */
+
+@media screen and (max-width:$mobile){
+    .community{
+        .sub_visual{
+            background: url(/img/brand2.jpg) no-repeat center/cover;
+        }
+        .inner{
+           
+            table{
+                
+                tr{
+                   
+                    th{
+                        font-size: 14px;
+                        &:nth-of-type(1){
+                            width: 0; display: none;
+                        }
+                        &:nth-of-type(3){
+                            width: 29%;
+                        }
+                        
+                    }
+                    td{
+                        &:nth-of-type(1){display: none;}
+                     }
+                }
+            }
+            .pagination{
+                
+                .prev{
+                    background: #888;
+                }
+                .next{
+                    background: #888;
+                }
+                .numbers{                  
+                   display: none;
+    
+                }
+    
+            }
+        }
+    }
+}

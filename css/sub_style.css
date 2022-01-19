@@ -1,0 +1,225 @@
+@charset "UTF-8";
+@import "reset.css";
+
+/* header_sub영역 */
+
+#header_sub{
+    width: 100%; border-bottom: 1px solid #ddd;
+    /* position: absolute; */
+    /* 보더로 주면 스크롤생김 보더 바텀으로만 */
+}
+#header_sub .inner{
+    width: 1180px; height: 120px; margin: 0 auto; position: relative;
+}
+/* 자식요소에 앱솔루트를 하기위해 부모요소에 높이값이 있어야한다. */
+#header_sub .inner>h1{
+    position: absolute; left: 0; bottom: 15px;
+}
+/* 폰트는 h1이 아닌 a태그에줘야한다 상속안됨 */
+#header_sub .inner>h1 a {
+    font: bold 24px/1 'arial'; color: #444;
+}
+#header_sub .inner #gnb{
+    position: absolute; right: 0; bottom: 0;
+}
+/* 부모가 앱솔루트라 플롯해제는 안해도됨 */
+#header_sub .inner #gnb li{
+    float: left;
+}
+#header_sub .inner #gnb li a{
+    display: block; padding: 14px 40px; font: bold 14px/1 'arial'; color: #777;
+}
+/* a태그안의 글이 길이가 다르므로 넓이를 주기보다 패딩으로 사이를 벌린다.  또는 넓이값을 직접 준다.
+넓이값을 줄때는 전에 높이가 달라진다. 패딩을 준다면 보더 박스때문에 중첩이 안되지만 넓이를 주면 겹침
+*/
+#header_sub .inner #gnb li a:hover{
+    background: #555; color: #fff;
+}
+#header_sub .inner .util{
+    position: absolute; right: 40px; top: 20px;
+}
+#header_sub .inner .util li{
+    float: left; margin-left: 20px;
+}
+#header_sub .inner .util li a{
+    font: 12px/1 'arial'; color: #999;
+}
+#header_sub .inner .util li a:hover{
+    color: #444; 
+}
+
+/* 햄버거 */
+#header_sub .inner .btnCall{
+    position: absolute; right: 30px; top: 50%; transform: translateY(-50%);
+    display: none; width: 20px; height: 20px;
+}
+#header_sub .inner .btnCall::before{
+    content: ''; display: block; width: 100%; height: 2px; background: #000;
+    position: absolute; top: 0px; left: 0px;
+    /* transition: all 1s; */
+    transition: top 0.5s 0s, transform 0.5s 0.5s;
+}
+#header_sub .inner .btnCall::after{
+    content: ''; display: block; width: 100%; height: 2px; background: #000;
+    position: absolute; bottom: 0px; left: 0px;
+    transition: bottom 0.5s 0s, transform 0.5s 0.5s;}
+#header_sub .inner .btnCall span{
+    display: block; width: 100%; height: 2px;
+    background: #000; position: absolute;
+    top: 50%; left: 0; margin-top: -1px;
+    text-indent: -99999px; transition: all 1s;
+}
+
+#header_sub .inner .btnCall.on::before{
+    top: 50%; margin-top: -1px;
+    transform: rotate(45deg);
+}
+/* -1을 해줘야한다. */
+#header_sub .inner .btnCall.on::after{
+    bottom: 50%; margin-bottom: -1px;
+    transform: rotate(-45deg);
+}
+#header_sub .inner .btnCall.on span{
+    transform: translateX(-100%); opacity: 0;
+}
+
+#header_sub .inner .menuMo{
+    width: 270px; height: 100vh; background: #333;
+    position: fixed; top: 0; left: -270px;
+    padding: 35px 30px; z-index: 10;
+    transition: all 0.5s;
+    display: none;
+}
+
+#header_sub .inner .menuMo.on{
+    left: 0;
+}
+
+/*위에 원본을 >h1 안하면 밑에 박힘 */
+#header_sub .inner .menuMo h1{
+    border-bottom:1px solid #666;
+    padding-bottom: 30px;
+}
+#header_sub .inner .menuMo h1 a{
+    font: bold 24px/1 'arial'; color: #fff; display: block; text-align: center;
+}
+#header_sub .inner .menuMo h1 span{
+    font-size: 12px; color: #aaa;
+}
+/* #header_sub .inner .menuMo #gnbMo 도 li도 모두 아래로 쌓는것이므로 따로 할것은없음 */
+#header_sub .inner .menuMo #gnbMo li a{
+    display: block; width: 100%; padding: 20px 0; border-bottom: 1px solid #444;
+    font: bold 14px/1 'arial'; color: #fff; text-align: center;
+}
+
+/* content영역 */
+.content{
+    width: 100%; padding: 0px 0px 150px;
+}
+.content .sub_visual{
+    width: 100%; height: 250px; background: #bbb; margin-bottom: 100px;
+}
+.content .inner{
+    width: 1180px; margin: 0 auto; min-height: 500px;
+    border: 1px solid red;
+}
+.content .inner h1{
+    font: 50px/1 'arial'; color: #000; margin-bottom: 60px;
+}
+.content .inner h1 span{
+    font: 20px/1 '맑은고딕'; color: #aaa;
+}
+.content .inner h1 span::before{
+    content: '/'; margin-right: 20px; margin-left: 10px;
+}
+
+/* footer_sub -------------------------------------- */
+#footer_sub{
+    width:100%; padding:100px 0; 
+    background:#444; 
+}
+#footer_sub .inner{
+    width:1180px; margin:0 auto; 
+}
+#footer_sub .inner::after{
+    content:''; display:block; clear:both; 
+}
+#footer_sub .inner h1{
+    font:bold 24px/1 'arial'; color:#666; 
+    float:left; 
+}
+#footer_sub .inner ul{
+    float:right; 
+}
+#footer_sub .inner ul li{
+    float:left; margin-left:20px; 
+}
+#footer_sub .inner ul li a{
+    font:bold 14px/1 'arial'; color:#666; 
+}
+
+#footer_sub .inner address{
+    float:left; width:100%; 
+    font:14px/1.3 'arial'; color:#777; 
+    margin-bottom:20px; margin-top:20px; 
+    border-top:1px solid #888; 
+    padding-top:20px; 
+}
+#footer_sub .inner p{
+    font:12px/1 'arial'; color:#777; 
+    width:100%; float:left; 
+}
+
+@media screen and (max-width:1179px){
+    /* header영역 */
+#header_sub .inner{
+    width: 100%; height: 100px; 
+}
+#header_sub .inner h1{
+   left: 20px; 
+}
+#header_sub .inner .menuWeb{
+    display: none;
+}
+#header_sub .inner .btnCall{
+    display: block;
+}
+#header_sub .inner .menuMo{
+    display: block;
+}
+
+/* content영역 */
+.content .sub_visual{
+    height: 200px; margin-bottom: 80px;
+}
+.content .inner{
+    width: 100%; min-height: 300px;
+}
+
+
+
+/* footer -------------------------------------- */
+#footer_sub{   padding:80px 30px; }
+#footer_sub .inner{    width:100%;}
+
+
+
+}
+
+@media screen and (max-width:539px){
+/* content영역 */
+.content .sub_visual{
+    height: 150px; margin-bottom: 50px;
+}
+.content .inner{ min-height: 200px;
+}
+
+
+/* footer -------------------------------------- */
+#footer_sub{   padding:80px 30px; }
+#footer_sub .inner{    width:100%;}
+#footer_sub .inner h1 {margin-bottom: 20px;}
+#footer_sub .inner ul{width: 100%;}
+#footer_sub .inner ul li {margin-left: 0px;margin: 5px;}
+
+}
